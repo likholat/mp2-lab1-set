@@ -1,7 +1,8 @@
-#include "tbitfield.h"
+#include "C:\prog\mp2-lab1-set\include\tbitfield.h"
 
 #include <gtest.h>
-
+#include "C:\prog\mp2-lab1-set\sln\vc10\bitfield\newClass.h"
+/*
 TEST(TBitField, can_create_bitfield_with_positive_length)
 {
   ASSERT_NO_THROW(TBitField bf(3));
@@ -309,3 +310,4 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+*/
