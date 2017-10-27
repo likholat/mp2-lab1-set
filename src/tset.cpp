@@ -35,9 +35,10 @@ int TSet::GetMaxPower(void) const // получить макс. к-во эл-т�
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {
-	if (BitField.GetBit(Elem)) return 1;
+	if (BitField.GetBit(Elem)) 
+		return 1;
 	else
-	return 0;
+		return 0;
 }
 
 void TSet::InsElem(const int Elem) // включение элемента множества
@@ -54,59 +55,51 @@ void TSet::DelElem(const int Elem) // исключение элемента мн
 
 TSet& TSet::operator=(const TSet &s) // присваивание
 {
-	MaxPower=s.MaxPower;
-	BitField=s.BitField;
+	MaxPower = s.MaxPower;
+	BitField = s.BitField;
 	return *this;
 }
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
-	if (BitField==s.BitField)
-	{
-    return 1;
-	}
+	if (BitField == s.BitField)
+		return 1;
 	else
-	{
 		return 0;
-	}
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
-		if (BitField!=s.BitField)
-	{
-    return 1;
-	}
+	if (BitField != s.BitField)
+		return 1;
 	else
-	{
 		return 0;
-	}
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
-	TSet res(BitField | s.BitField);
-	return res;
+	TSet temp(BitField | s.BitField);
+	return temp;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
-	TSet temp (*this);
+	TSet temp(*this);
 	temp.BitField.SetBit(Elem);
 	return temp;
 }
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
-	TSet temp (*this);
+	TSet temp(*this);
 	temp.BitField.ClrBit(Elem);
 	return temp;
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
-	TSet res (BitField & s.BitField);
-	return res;
+	TSet temp(BitField & s.BitField);
+	return temp;
 }
 
 TSet TSet::operator~(void) // дополнение
@@ -123,18 +116,15 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 	while ((n >= 0) && (n < s.MaxPower))
 	{
 		s.InsElem(n);
-		istr>>n;
+		istr >> n;
 	}
 	return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-
-	int l=s.GetMaxPower();
-	for (int i=0; i<l; i++) {
-		if (s.IsMember(i) != 0)
+	for (int i = 0; i < s.GetMaxPower ; i++) 
+		if (s.IsMember(i))
 			ostr << i;
-	}
 	return ostr;
 }
